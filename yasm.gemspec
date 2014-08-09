@@ -5,7 +5,7 @@ require 'yasm/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "yasm"
-  spec.version       = Yasm::VERSION
+  spec.version       = YASM::VERSION
   spec.authors       = ["Eric Roberts"]
   spec.email         = ["ericroberts@gmail.com"]
   spec.summary       = %q{Yet another state machine gem.}
