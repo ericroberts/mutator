@@ -28,7 +28,7 @@ module YASM
     end
 
     def self.states
-      self.valid_transitions.map do |t|
+      self.transitions.map do |t|
         [t[:to], t[:from]]
       end.flatten.uniq
     end
@@ -37,8 +37,8 @@ module YASM
       self.class.states
     end
 
-    def valid_transitions
-      self.class.valid_transitions
+    def transitions
+      self.class.transitions
     end
   end
 end

@@ -7,13 +7,17 @@ module YASM
     end
 
     def valid?
-      valid_transitions.present?
+      transitions.present?
+    end
+
+    def stateholder
+      machine.stateholder
     end
 
   protected
 
-    def valid_transitions
-      machine.valid_transitions.select do |t|
+    def transitions
+      machine.transitions.select do |t|
         t[:to] == to && t[:from].include?(from)
       end
     end
