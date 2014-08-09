@@ -1,5 +1,4 @@
+require "yasm/helpers"
+require "yasm/machine"
+require "yasm/transition"
 require "yasm/version"
-
-module Yasm
-  # Your code goes here...
-end
