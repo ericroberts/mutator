@@ -46,7 +46,7 @@ end
 
 ### So how do I use it?
 
-Transitions looks like this:
+Transition looks like this:
 
 ``` ruby
 wonder = Wonder.new
@@ -89,7 +89,7 @@ The lambdas will be called and passed the transition object. The transition obje
 
 I bet back at the part where I defined `YASM::Wonder`, you were thinking, "why the hell would you define a whole other class just to define your transitions?". I could have just always included an instance of Machine instead of the subclassed version.
 
-This is a thing I'm debating on. The idea is that it would attract more state related behaviour. For example, to answer the question at the top of this heading, you could define a method to run the transition:
+This is a thing I'm still debating. The idea for keeping them separate is that it gives you a place for more state related behaviour to go. For example, to answer the question at the top of this heading, you could define a method to run the transition:
 
 ``` ruby
 module YASM
