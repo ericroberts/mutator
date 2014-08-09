@@ -1,6 +1,6 @@
 # Mutator
 
-Ya, this is another state machine gem. Why? Well, among the major state machine gems I found, they didn't quite do what I was looking for. So I wrote my own. Plus, reinventing the wheel is fun!
+Yes, this is another state machine gem. Why? Well, among the major state machine gems I found, they didn't quite do what I was looking for. So I wrote my own. Plus, reinventing the wheel is fun!
 
 ## Installation
 
