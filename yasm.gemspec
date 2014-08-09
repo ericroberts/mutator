@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Yasm::VERSION
   spec.authors       = ["Eric Roberts"]
   spec.email         = ["ericroberts@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Yet another state machine gem.}
+  spec.description   = %q{Yet another state machine gem. I didn't find one I liked, so I made one. I probably didn't look hard enough.}
+  spec.homepage      = "https://github.com/ericroberts/yasm"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -20,4 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "coveralls"
 end
