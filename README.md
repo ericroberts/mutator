@@ -101,7 +101,7 @@ module YASM
     # Save the activerecord class on success and raise exception on fail.
     def deliver!
       success = lambda { |t| t.stateholder.save! }
-      failure = lambda { |t| fail Exception, "Cannot transition to #{t.to} from #{t.from}" }
+      failure = lambda { |t| fail "Cannot transition to #{t.to} from #{t.from}" }
       transition to: :delivered, success: success, failure: failure
     end
   end
