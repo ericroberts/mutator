@@ -108,6 +108,17 @@ end
 
 Now you can always use `machine.deliver!` to do the transition to delivered.
 
+### Where are my scopes?
+
+Way back at the beginning when we included `Mutator::Helpers`, that defined class methods on `Wonder` for each invoice.
+
+``` ruby
+Wonder.machine.states   #=> [:signed, :sealed, :delivered, :yours]
+Wonder.signed           #=> Wonder.where(state: :signed)
+Wonder.sealed           #=> Wonder.where(state: :sealed)
+[...]
+```
+
 ### That's all folks!
 
 That's more or less it. You may or may not like the way I've done this state machine, but it works for the purposes I need it for. I'm happy to discuss changes or reasoning behind certain things. There isn't a ton of code so feel free to poke around!
