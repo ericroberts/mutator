@@ -1,4 +1,4 @@
-module YASM
+module Mutator
   class Machine
     attr_reader :stateholder
 

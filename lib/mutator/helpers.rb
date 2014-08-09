@@ -1,4 +1,4 @@
-module YASM
+module Mutator
   module Helpers
     def machine
       @machine ||= machine_class.new(self)

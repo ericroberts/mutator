@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'yasm/version'
+require 'mutator/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "yasm"
-  spec.version       = YASM::VERSION
+  spec.name          = "mutator"
+  spec.version       = Mutator::VERSION
   spec.authors       = ["Eric Roberts"]
   spec.email         = ["ericroberts@gmail.com"]
-  spec.summary       = %q{Yet another state machine gem.}
+  spec.summary       = %q{Mutator is just another state machine gem.}
   spec.description   = %q{Yet another state machine gem. I didn't find one I liked, so I made one. I probably didn't look hard enough.}
-  spec.homepage      = "https://github.com/ericroberts/yasm"
+  spec.homepage      = "https://github.com/ericroberts/mutator"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

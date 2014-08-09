@@ -1,4 +1,4 @@
-module YASM
+module Mutator
   class Transition
     attr_reader :to, :from, :machine
 

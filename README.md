@@ -4,11 +4,9 @@ Ya, this is another state machine gem. Why? Well, among the major state machine 
 
 ## Installation
 
-**Not actually a gem yet. Need a name. YASM is taken.**
-
 Add this line to your application's Gemfile:
 
-    gem 'yasm'
+    gem 'mutator'
 
 And then execute:
 
@@ -16,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install yasm
+    $ gem install mutator
 
 ## Usage
 
@@ -26,14 +24,14 @@ Well, I'm going to assume you are adding a state machine to a Rails ActiveRecord
 
 ``` ruby
 class Wonder < ActiveRecord::Base
-  include YASM::Helpers
+  include Mutator::Helpers
 
   def state
     super || :signed # Set the default state. Can also be done in the database.
   end
 end
 
-module YASM
+module Mutator
   class Wonder < Machine
     def self.transitions
       [
@@ -89,12 +87,12 @@ The lambdas will be called and passed the transition object. The transition obje
 
 ### OK, but what if I really want to do the same thing on every transition?
 
-I bet back at the part where I defined `YASM::Wonder`, you were thinking, "why the hell would you define a whole other class just to define your transitions?". I could have just always included an instance of Machine instead of the subclassed version.
+I bet back at the part where I defined `Mutator::Wonder`, you were thinking, "why the hell would you define a whole other class just to define your transitions?". I could have just always included an instance of Machine instead of the subclassed version.
 
 This is a thing I'm still debating. The idea for keeping them separate is that it gives you a place for more state related behaviour to go. For example, to answer the question at the top of this heading, you could define a method to run the transition:
 
 ``` ruby
-module YASM
+module Mutator
   class Wonder < Machine
     [...]
 
@@ -122,7 +120,7 @@ That said, I'm pretty open to changing it, so let me know your thoughts!
 
 Standard contributing instructions: (I have no idea if this is useful... I just always leave it here)
 
-1. Fork it ( https://github.com/ericroberts/yasm/fork )
+1. Fork it ( https://github.com/ericroberts/mutator/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
