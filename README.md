@@ -4,6 +4,8 @@ Ya, this is another state machine gem. Why? Well, among the major state machine 
 
 ## Installation
 
+**Not actually a gem yet. Need a name. YASM is taken.**
+
 Add this line to your application's Gemfile:
 
     gem 'yasm'
