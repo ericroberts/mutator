@@ -1,2 +1,5 @@
 StringLiterals:
   Enabled: false
+
+AccessModifierIndentation:
+  EnforcedStyle: outdent
