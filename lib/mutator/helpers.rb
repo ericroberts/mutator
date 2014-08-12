@@ -5,7 +5,7 @@ module Mutator
     end
 
     def self.included(base)
-      "Mutator::#{base.name}".constantize.states.each do |state|
+      Mutator.const_get(base.name, false).states.each do |state|
         base.send(:define_singleton_method, state) do
           self.where(state: state)
         end
@@ -15,7 +15,7 @@ module Mutator
   protected
 
     def machine_class
-      "Mutator::#{self.class.name}".constantize
+      Mutator.const_get(self.class.name, false)
     end
   end
 end
