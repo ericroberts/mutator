@@ -3,10 +3,12 @@ module Mutator
     attr_reader :to, :from, :machine
 
     def initialize(opts)
-      [:to, :from, :machine].each do |attr|
-        fail ArgumentError, "must provide #{attr}" unless opts[attr]
-      end
+      require_parameters!(opts)
       @to, @from, @machine = opts[:to], opts[:from], opts[:machine]
+    end
+
+    def call
+      stateholder.state = to if valid?
     end
 
     def valid?
@@ -28,8 +30,14 @@ module Mutator
   protected
 
     def transitions
-      machine.transitions.select do |t|
-        t[:to] == to && t[:from].include?(from)
+      machine.transitions.select do |transition|
+        transition[:to] == to && transition[:from].include?(from)
+      end
+    end
+
+    def require_parameters!(opts)
+      [:to, :from, :machine].each do |attr|
+        fail ArgumentError, "must provide #{attr}" unless opts[attr]
       end
     end
   end

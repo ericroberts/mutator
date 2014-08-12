@@ -1,23 +1,5 @@
 require 'spec_helper'
-
-class Stateholder
-  attr_writer :state
-
-  def state
-    @state ||= :initial_state
-  end
-end
-
-module Mutator
-  class Stateholder < Machine
-    def self.transitions
-      [
-        { from: [:initial_state], to: :second_state },
-        { from: [:second_state], to: :third_state }
-      ]
-    end
-  end
-end
+require 'support/test_classes'
 
 describe Mutator::Transition do
   subject { Mutator::Transition.new(to: to, from: from, machine: machine) }
