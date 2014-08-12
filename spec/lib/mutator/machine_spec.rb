@@ -58,6 +58,16 @@ describe Mutator::Stateholder do
       Mutator::Transition.new(to: to, from: from, machine: subject)
     end
 
+    context 'arguments' do
+      it 'should raise an exception if you do not provide to' do
+        expect { subject.transition }.to raise_error ArgumentError
+      end
+
+      it 'should not raise if to is provided' do
+        expect { subject.transition to: :any_state }.to_not raise_error
+      end
+    end
+
     context 'valid transition' do
       let(:from) { :initial_state }
       let(:to) { :second_state }

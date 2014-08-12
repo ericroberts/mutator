@@ -30,6 +30,16 @@ describe Mutator::Transition do
     it 'should not error' do
       expect { subject }.to_not raise_error
     end
+
+    context 'arguments' do
+      [:to, :from, :machine].each do |attr|
+        it "should require you to pass #{attr}" do
+          args = { to: :something, from: :something, machine: :something }
+          args.delete attr
+          expect { subject.class.new(args) }.to raise_error ArgumentError, "must provide #{attr}"
+        end
+      end
+    end
   end
 
   [:to, :from, :machine].each do |attr|
