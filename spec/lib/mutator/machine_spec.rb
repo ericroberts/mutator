@@ -54,7 +54,9 @@ describe Mutator::Stateholder do
   end
 
   describe '#transition' do
-    let(:transition) { Mutator::Transition.new(to: to, from: from, machine: subject) }
+    let(:transition) do
+      Mutator::Transition.new(to: to, from: from, machine: subject)
+    end
 
     context 'valid transition' do
       let(:from) { :initial_state }

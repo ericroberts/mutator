@@ -19,7 +19,7 @@ module Mutator
     end
 
     def eql?(other)
-      self.public_send(:==, other)
+      public_send(:==, other)
     end
 
   protected

@@ -35,7 +35,7 @@ describe Mutator::Transition do
   [:to, :from, :machine].each do |attr|
     describe "##{attr}" do
       it 'should be set to what it was passed' do
-        expect(subject.public_send(attr)).to eq self.public_send(attr)
+        expect(subject.public_send(attr)).to eq public_send(attr)
       end
     end
   end
@@ -67,7 +67,7 @@ describe Mutator::Transition do
   end
 
   shared_examples 'equal' do |method|
-    it 'should consider itself equal to another transition with the same properties' do
+    it 'should consider itself equal to another transition that is the same' do
       transition1 = subject.class.new(to: to, from: from, machine: machine)
       transition2 = subject.class.new(to: to, from: from, machine: machine)
 

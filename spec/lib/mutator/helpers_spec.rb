@@ -18,7 +18,7 @@ class Stateholder
     @state ||= :initial_state
   end
 
-  def self.where(*args)
+  def self.where(*)
   end
 end
 
@@ -52,8 +52,10 @@ describe Mutator::Helpers do
           expect(subject.class).to respond_to state
         end
 
-        it 'should call where on the stateholder with the state as an argument' do
-          expect(subject.class).to receive(:where).with(state: state).and_return(Stateholder.new)
+        it 'should call where on the stateholder' do
+          expect(subject.class).to receive(:where).
+                                    with(state: state).
+                                    and_return(Stateholder.new)
           subject.class.public_send(state)
         end
       end
