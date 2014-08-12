@@ -1,3 +1,8 @@
+[![Gem Version](https://badge.fury.io/rb/mutator.png)](http://badge.fury.io/rb/mutator)
+[![Build Status](https://travis-ci.org/ericroberts/mutator.png?branch=master)](https://travis-ci.org/ericroberts/mutator)
+[![Code Climate](https://codeclimate.com/github/ericroberts/mutator.png)](https://codeclimate.com/github/ericroberts/mutator)
+[![Coverage Status](https://coveralls.io/repos/ericroberts/mutator/badge.png?branch=master)](https://coveralls.io/r/ericroberts/mutator?branch=master)
+
 # Mutator
 
 Yes, this is another state machine gem. Why? Well, among the major state machine gems I found, they didn't quite do what I was looking for. So I wrote my own. Plus, reinventing the wheel is fun!
