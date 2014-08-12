@@ -32,6 +32,26 @@ describe Mutator::Transition do
     end
   end
 
+  describe '#call' do
+    context 'transition is valid' do
+      let(:to) { :second_state }
+      let(:from) { :initial_state }
+
+      it 'should return the new state' do
+        expect(subject.call).to eq :second_state
+      end
+    end
+
+    context 'transition is invalid' do
+      let(:to) { :third_state }
+      let(:from) { :initial_state }
+
+      it 'should return the new state' do
+        expect(subject.call).to be nil
+      end
+    end
+  end
+
   describe '#valid?' do
     context 'valid transition' do
       let(:to) { :second_state }
