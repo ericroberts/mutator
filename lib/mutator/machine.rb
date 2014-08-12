@@ -15,25 +15,14 @@ module Mutator
     end
 
     def transition(options)
-      defaults = {
-        success: lambda { |_| },
-        failure: lambda { |_| }
-      }
-      opts = defaults.merge(options)
-      fail ArgumentError, 'must provide state to transition to' unless opts[:to]
+      options = extract(options)
+      success, failure, transition = options.values
 
-      transition = Transition.new(
-        to: opts[:to],
-        from: current_state,
-        machine: self
-      )
-
-      if transition.valid?
-        stateholder.state = opts[:to]
-        opts[:success].call(transition)
+      if transition.call
+        success.call(transition)
         true
       else
-        opts[:failure].call(transition)
+        failure.call(transition)
         false
       end
     end
@@ -50,6 +39,23 @@ module Mutator
 
     def transitions
       self.class.transitions
+    end
+
+  protected
+
+    def extract(options)
+      to = options[:to]
+      fail ArgumentError, 'must provide state to transition to' unless to
+
+      {
+        success: lambda { |_| },
+        failure: lambda { |_| },
+        transition: Transition.new(
+          to: to,
+          from: current_state,
+          machine: self
+        )
+      }.merge(options)
     end
   end
 end
