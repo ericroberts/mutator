@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'mutator'
 
 class Stateholder
   attr_writer :state
