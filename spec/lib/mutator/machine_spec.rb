@@ -55,6 +55,8 @@ describe Mutator::Stateholder do
   end
 
   describe '#transition' do
+    let(:transition) { Mutator::Transition.new(to: to, from: from, machine: subject) }
+
     context 'valid transition' do
       let(:from) { :initial_state }
       let(:to) { :second_state }
@@ -88,6 +90,11 @@ describe Mutator::Stateholder do
 
         it 'should call the success policy' do
           expect(success).to receive(:call).and_return(true)
+          subject.transition(to: to, success: success)
+        end
+
+        it 'should call the success policy with transition' do
+          expect(success).to receive(:call).with(transition).and_return(true)
           subject.transition(to: to, success: success)
         end
       end
@@ -129,9 +136,14 @@ describe Mutator::Stateholder do
           subject.transition(to: to, failure: failure)
         end
 
+        it 'should call the failure policy with transition' do
+          expect(failure).to receive(:call).with(transition).and_return(true)
+          subject.transition(to: to, failure: failure)
+        end
+
         context 'when policy is to raise an exception' do
           before { expect(failure).to receive(:call).and_raise(Exception) }
-          
+
           it 'should raise an exception' do
             expect { subject.transition(to: to, failure: failure) }.to raise_error Exception
           end

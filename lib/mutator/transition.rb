@@ -14,6 +14,14 @@ module Mutator
       machine.stateholder
     end
 
+    def ==(other)
+      to == other.to && from == other.from && machine == other.machine
+    end
+
+    def eql?(other)
+      self.public_send(:==, other)
+    end
+
   protected
 
     def transitions
