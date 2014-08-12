@@ -14,15 +14,22 @@ module Mutator
       stateholder.state
     end
 
-    def transition(to:, success: lambda { |_transition| }, failure: lambda { |_transition| })
-      transition = Transition.new(to: to, from: current_state, machine: self)
+    def transition(options)
+      defaults = {
+        success: lambda { |_| },
+        failure: lambda { |_| }
+      }
+      opts = defaults.merge(options)
+      fail ArgumentError, 'must provide state to transition to' unless opts[:to]
+
+      transition = Transition.new(to: opts[:to], from: current_state, machine: self)
 
       if transition.valid?
-        stateholder.state = to
-        success.call(transition)
+        stateholder.state = opts[:to]
+        opts[:success].call(transition)
         true
       else
-        failure.call(transition)
+        opts[:failure].call(transition)
         false
       end
     end

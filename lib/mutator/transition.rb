@@ -2,8 +2,11 @@ module Mutator
   class Transition
     attr_reader :to, :from, :machine
 
-    def initialize(to:, from:, machine:)
-      @to, @from, @machine = to, from, machine
+    def initialize(opts)
+      [:to, :from, :machine].each do |attr|
+        fail ArgumentError, "must provide #{attr}" unless opts[attr]
+      end
+      @to, @from, @machine = opts[:to], opts[:from], opts[:machine]
     end
 
     def valid?
