@@ -7,7 +7,7 @@ module Mutator
     end
 
     def valid?
-      transitions.present?
+      transitions.length > 0
     end
 
     def stateholder
