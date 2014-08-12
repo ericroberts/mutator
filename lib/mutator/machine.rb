@@ -22,7 +22,11 @@ module Mutator
       opts = defaults.merge(options)
       fail ArgumentError, 'must provide state to transition to' unless opts[:to]
 
-      transition = Transition.new(to: opts[:to], from: current_state, machine: self)
+      transition = Transition.new(
+        to: opts[:to],
+        from: current_state,
+        machine: self
+      )
 
       if transition.valid?
         stateholder.state = opts[:to]
