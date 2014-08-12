@@ -51,7 +51,7 @@ end
 
 ### So how do I use it?
 
-Transition looks like this:
+Transitions look like this:
 
 ``` ruby
 wonder = Wonder.new
