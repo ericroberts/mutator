@@ -30,8 +30,8 @@ module Mutator
   protected
 
     def transitions
-      machine.transitions.select do |t|
-        t[:to] == to && t[:from].include?(from)
+      machine.transitions.select do |transition|
+        transition[:to] == to && transition[:from].include?(from)
       end
     end
 

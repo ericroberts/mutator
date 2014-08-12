@@ -28,8 +28,9 @@ module Mutator
     end
 
     def self.states
-      self.transitions.map do |t|
-        [t[:to], t[:from]]
+      self.transitions.map do |transition|
+        to, from = transition[:to], transition[:from]
+        [to, from]
       end.flatten.uniq
     end
 
