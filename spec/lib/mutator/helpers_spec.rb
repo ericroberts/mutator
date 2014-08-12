@@ -1,26 +1,5 @@
 require 'spec_helper'
-
-module Mutator
-  class Stateholder < Machine
-    def self.transitions
-      [
-        { from: [:initial_state], to: :second_state },
-        { from: [:second_state], to: :third_state }
-      ]
-    end
-  end
-end
-
-class Stateholder
-  include Mutator::Helpers
-
-  def state
-    @state ||= :initial_state
-  end
-
-  def self.where(*)
-  end
-end
+require 'support/test_classes'
 
 describe Mutator::Helpers do
   subject { Mutator::Helpers }
