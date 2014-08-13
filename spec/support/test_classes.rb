@@ -18,6 +18,6 @@ class Stateholder
     @state ||= :initial_state
   end
 
-  def self.where(*)
+  def self.where *_
   end
 end

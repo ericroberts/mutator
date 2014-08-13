@@ -18,7 +18,9 @@ describe Mutator::Transition do
         it "should require you to pass #{attr}" do
           args = { to: :something, from: :something, machine: :something }
           args.delete attr
-          expect { subject.class.new(args) }.to raise_error ArgumentError, "must provide #{attr}"
+          expect {
+            subject.class.new(args)
+          }.to raise_error ArgumentError, "must provide #{attr}"
         end
       end
     end
