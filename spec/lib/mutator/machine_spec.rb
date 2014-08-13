@@ -138,7 +138,9 @@ describe Mutator::Stateholder do
           before { expect(failure).to receive(:call).and_raise(Exception) }
 
           it 'should raise an exception' do
-            expect { subject.transition(to: to, failure: failure) }.to raise_error Exception
+            expect {
+              subject.transition(to: to, failure: failure)
+            }.to raise_error Exception
           end
         end
       end
