@@ -3,3 +3,22 @@ StringLiterals:
 
 AccessModifierIndentation:
   EnforcedStyle: outdent
+
+MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
+
+Documentation:
+  Enabled: false
+
+Lambda:
+  Enabled: false
+
+DotPosition:
+  EnforcedStyle: trailing
+
+Blocks:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - 'mutator.gemspec'
