@@ -16,7 +16,7 @@ module Mutator
 
     def transition(options)
       options = extract(options)
-      success, failure, transition = options.values
+      transition, success, failure = options.values
 
       if transition.call
         success.call(transition)
@@ -49,13 +49,13 @@ module Mutator
       fail ArgumentError, 'must provide state to transition to' unless to
 
       {
-        success: lambda { |_| },
-        failure: lambda { |_| },
         transition: Transition.new(
           to: to,
           from: current_state,
           machine: self
-        )
+        ),
+        success: lambda { |_| },
+        failure: lambda { |_| }
       }.merge(options)
     end
   end
