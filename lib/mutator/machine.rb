@@ -2,7 +2,7 @@ module Mutator
   class Machine
     attr_reader :stateholder
 
-    def initialize(stateholder)
+    def initialize stateholder
       @stateholder = stateholder
     end
 
@@ -14,15 +14,15 @@ module Mutator
       stateholder.state
     end
 
-    def transition(options)
-      options = extract(options)
+    def transition options
+      options = extract options
       transition, success, failure = options.values
 
       if transition.call
-        success.call(transition)
+        success.call transition
         true
       else
-        failure.call(transition)
+        failure.call transition
         false
       end
     end
@@ -44,7 +44,7 @@ module Mutator
 
   protected
 
-    def extract(options)
+    def extract options
       to = options[:to]
       fail ArgumentError, 'must provide state to transition to' unless to
 
@@ -56,7 +56,7 @@ module Mutator
         ),
         success: lambda { |_| },
         failure: lambda { |_| }
-      }.merge(options)
+      }.merge options
     end
   end
 end

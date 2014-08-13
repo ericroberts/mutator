@@ -2,8 +2,8 @@ module Mutator
   class Transition
     attr_reader :to, :from, :machine
 
-    def initialize(opts)
-      require_parameters!(opts)
+    def initialize opts
+      require_parameters! opts
       @to, @from, @machine = opts[:to], opts[:from], opts[:machine]
     end
 
@@ -19,12 +19,12 @@ module Mutator
       machine.stateholder
     end
 
-    def ==(other)
+    def == other
       to == other.to && from == other.from && machine == other.machine
     end
 
-    def eql?(other)
-      public_send(:==, other)
+    def eql? other
+      public_send :==, other
     end
 
   protected
@@ -35,7 +35,7 @@ module Mutator
       end
     end
 
-    def require_parameters!(opts)
+    def require_parameters! opts
       [:to, :from, :machine].each do |attr|
         fail ArgumentError, "must provide #{attr}" unless opts[attr]
       end
