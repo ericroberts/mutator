@@ -3,7 +3,9 @@ module Mutator
     attr_reader :to, :from, :machine
 
     def initialize opts
-      @to, @from, @machine = opts.fetch(:to), opts.fetch(:from), opts.fetch(:machine)
+      @to = opts.fetch(:to)
+      @from = opts.fetch(:from)
+      @machine = opts.fetch(:machine)
     end
 
     def call
