@@ -20,7 +20,7 @@ describe Mutator::Transition do
           args.delete attr
           expect {
             subject.class.new(args)
-          }.to raise_error ArgumentError, "must provide #{attr}"
+          }.to raise_error KeyError
         end
       end
     end
