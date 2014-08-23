@@ -40,13 +40,22 @@ module Mutator
   class Wonder < Machine
     def self.transitions
       [
-        { to: :sealed, from: [:signed] },
-        { to: :delivered, from: [:sealed] },
-        { to: :yours, from: [:delivered] }
+        { to: :sealed, from: :signed },
+        { to: :delivered, from: :sealed },
+        { to: :yours, from: :delivered }
       ]
     end
   end
 end
+```
+
+You can add multiple states to transition from like so:
+
+``` ruby
+def self.transitions
+  [
+    { to: :yours, from: [:signed, :sealed, :delivered] }
+  ]
 ```
 
 ### So how do I use it?
