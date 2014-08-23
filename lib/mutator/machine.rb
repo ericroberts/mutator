@@ -45,8 +45,7 @@ module Mutator
   protected
 
     def extract options
-      to = options[:to]
-      fail ArgumentError, 'must provide state to transition to' unless to
+      to = options.fetch(:to)
 
       {
         transition: Transition.new(to: to, from: current_state, machine: self),
