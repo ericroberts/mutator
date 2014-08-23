@@ -31,7 +31,7 @@ module Mutator
 
     def transitions
       machine.transitions.select do |transition|
-        transition[:to] == to && transition[:from].include?(from)
+        transition[:to] == to && Array(transition[:from]).include?(from)
       end
     end
 
