@@ -41,8 +41,14 @@ describe Mutator::Stateholder do
     end
 
     context 'arguments' do
-      it 'should raise an exception if you do not provide to' do
+      it 'should raise an exception if you do not provide any arguments' do
         expect { subject.transition }.to raise_error ArgumentError
+      end
+
+      it 'should raise a specific key error if you provide an arg but not to' do
+        expect {
+          subject.transition success: 'something'
+        }.to raise_error KeyError
       end
 
       it 'should not raise if to is provided' do
